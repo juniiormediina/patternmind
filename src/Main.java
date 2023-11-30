@@ -5,6 +5,11 @@ import creationalPatterns.abstractFactory.PaymentMethod;
 import creationalPatterns.factoryMethod.Payment;
 import creationalPatterns.factoryMethod.PaymentFactory;
 import creationalPatterns.factoryMethod.TypePayment;
+import creationalPatterns.prototype.PrototypeCard;
+import creationalPatterns.prototype.PrototypeFactory;
+
+import static creationalPatterns.prototype.PrototypeFactory.CartType.AMEX;
+import static creationalPatterns.prototype.PrototypeFactory.CartType.VISA;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,6 +19,21 @@ public class Main {
         testFactoryMethod();
         testAbstractFactory();
         testBuilder();
+        testPrototype();
+    }
+
+    private static void testPrototype() {
+        PrototypeFactory.loadCard();
+        try {
+            PrototypeCard visa = PrototypeFactory.getInstance(VISA);
+            visa.getCard();
+
+            PrototypeCard amex = PrototypeFactory.getInstance(AMEX);
+            amex.getCard();
+
+        }catch (CloneNotSupportedException e){
+            e.printStackTrace();
+        }
     }
 
     private static void testBuilder() {
