@@ -20,6 +20,12 @@ public class Main {
         testAbstractFactory();
         testBuilder();
         testPrototype();
+        testSingleton();
+    }
+
+    private static void testSingleton() {
+        creationalPatterns.singlenton.Card.getINSTANCE().setCardNumber("1234-1234-1234-1234");
+        System.out.println(creationalPatterns.singlenton.Card.getINSTANCE().getCardNumber());
     }
 
     private static void testPrototype() {
