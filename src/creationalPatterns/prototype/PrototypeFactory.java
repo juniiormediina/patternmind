@@ -8,18 +8,13 @@ import static creationalPatterns.prototype.PrototypeFactory.CartType.VISA;
 
 public class PrototypeFactory {
 
-    public static class CartType{
-        public static final String VISA = "visa";
-        public static final String AMEX = "amex";
-    }
-
     private static final Map<String, PrototypeCard> prototypes = new HashMap<>();
 
-    public static PrototypeCard getInstance(final String tipo) throws CloneNotSupportedException{
+    public static PrototypeCard getInstance(final String tipo) throws CloneNotSupportedException {
         return prototypes.get(tipo).clone();
     }
 
-    public static void loadCard(){
+    public static void loadCard() {
         Visa visa = new Visa();
         visa.setName("This card is Visa and its number is 16 digits.");
         prototypes.put(VISA, visa);
@@ -27,6 +22,11 @@ public class PrototypeFactory {
         Amex amex = new Amex();
         amex.setName("This card is Amex and its number is 16 digits.");
         prototypes.put(AMEX, amex);
+    }
+
+    public static class CartType {
+        public static final String VISA = "visa";
+        public static final String AMEX = "amex";
     }
 
 }

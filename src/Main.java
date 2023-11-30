@@ -31,7 +31,7 @@ public class Main {
             PrototypeCard amex = PrototypeFactory.getInstance(AMEX);
             amex.getCard();
 
-        }catch (CloneNotSupportedException e){
+        } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
     }
