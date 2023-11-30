@@ -1,3 +1,4 @@
+import behavioral.chainofresponsibility.CreditCard;
 import creationalPatterns.abstractFactory.AbstractFactory;
 import creationalPatterns.abstractFactory.Card;
 import creationalPatterns.abstractFactory.FactoryProvider;
@@ -16,11 +17,21 @@ public class Main {
         System.out.println("knowing design patterns with java!");
 
 //      Creational Design Patterns
+
         testFactoryMethod();
         testAbstractFactory();
         testBuilder();
         testPrototype();
         testSingleton();
+
+//      Behavioral Design Patterns
+
+        testChainOfResponsibility();
+    }
+
+    private static void testChainOfResponsibility() {
+        CreditCard card = new CreditCard();
+        card.crediCardRequest(15000);
     }
 
     private static void testSingleton() {
