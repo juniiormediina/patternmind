@@ -10,13 +10,9 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("knowing design patterns with java!");
 
-//      Factory Method
+//      Creational Design Patterns
         testFactoryMethod();
-
-//      Abstract Factory
         testAbstractFactory();
-
-//      Builder
         testBuilder();
     }
 
