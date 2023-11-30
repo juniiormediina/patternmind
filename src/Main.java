@@ -15,10 +15,24 @@ public class Main {
 
 //      Abstract Factory
         testAbstractFactory();
+
+//      Builder
+        testBuilder();
+    }
+
+    private static void testBuilder() {
+        creationalPatterns.builder.Card card = new creationalPatterns.builder.Card.CardBuilder(
+                "VISA",
+                "123456789")
+                .name("John Doe")
+                .expiryDate(2030)
+                .creditCard(true)
+                .build();
+
+        System.out.println(card.toString());
     }
 
     private static void testAbstractFactory() {
-
         AbstractFactory abstractFactory = FactoryProvider.getFactory("Card");
         Card card = (Card) abstractFactory.create("VISA");
 
@@ -27,7 +41,6 @@ public class Main {
 
         System.out.println(
                 "Card type: " + card.getCardType() + "\nCard number: " + card.getCardNumber() + "\nPayment method: " + paymentMethod.doPayment());
-
     }
 
     private static void testFactoryMethod() {
