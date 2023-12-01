@@ -1,4 +1,7 @@
 import behavioral.chainofresponsibility.CreditCard;
+import behavioral.command.CreditCardActivateCommand;
+import behavioral.command.CreditCardDesactivateCommand;
+import behavioral.command.CreditCardInvoker;
 import creationalPatterns.abstractFactory.AbstractFactory;
 import creationalPatterns.abstractFactory.Card;
 import creationalPatterns.abstractFactory.FactoryProvider;
@@ -16,23 +19,40 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("knowing design patterns with java!");
 
-//      Creational Design Patterns
+////      Creational Design Patterns
+//
+//        testFactoryMethod();
+//        testAbstractFactory();
+//        testBuilder();
+//        testPrototype();
+//        testSingleton();
+//
+////      Behavioral Design Patterns
+//
+//        testChainOfResponsibility();
+        testCommand();
+    }
 
-        testFactoryMethod();
-        testAbstractFactory();
-        testBuilder();
-        testPrototype();
-        testSingleton();
+    private static void testCommand() {
+        CreditCardInvoker invoker = new CreditCardInvoker();
 
-//      Behavioral Design Patterns
+        behavioral.command.CreditCard creditCard = new behavioral.command.CreditCard();
+        invoker.setCommand(new CreditCardActivateCommand(creditCard));
+        invoker.run();
 
-        testChainOfResponsibility();
+        System.out.println("------------------------------------------------------------------");
+
+        behavioral.command.CreditCard creditCardDeactivate = new behavioral.command.CreditCard();
+        invoker.setCommand(new CreditCardDesactivateCommand(creditCardDeactivate));
+        invoker.run();
     }
 
     private static void testChainOfResponsibility() {
         CreditCard card = new CreditCard();
         card.crediCardRequest(15000);
     }
+
+    //      Creational Design Patterns
 
     private static void testSingleton() {
         creationalPatterns.singlenton.Card.getINSTANCE().setCardNumber("1234-1234-1234-1234");
